@@ -2,7 +2,7 @@ class ContestsController < ApplicationController
   before_action :sign_in_user, :only => [:index, :validate, :success]
   def index
     max_level = Problem.maximum(:level)
-    if get_level >= max_level
+    if get_level > max_level
       flash[:success] = "Congrats! You cleared the problem set."
       render 'success'      
     else
