@@ -1,8 +1,14 @@
 class ContestsController < ApplicationController
-  before_action :sign_in_user, :only => [:index, :validate]
+  before_action :sign_in_user, :only => [:index, :validate, :success]
   def index
-    @name = Problem.find_by_level(get_level).url
-    @problem = Problem.new
+    max_level = Problem.maximum(:level)
+    if get_level >= max_level
+      flash[:success] = "Congrats! You cleared the problem set."
+      render 'success'      
+    else
+      @name = Problem.find_by_level(get_level).url
+      @problem = Problem.new
+    end
   end
 
   def validate
