@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= yield(:title) %></title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <!-- Bootstrap href -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-7s5uDGW3AHqw6xtJmNNtr+OBRJUlgkNJEo78P4b0yRw= sha512-nNo+yCHEyn0smMxSswnf/OnX6/KwJuZTlNZBjauKhTK0c+zT+q5JOCx0UFhXQ6rJR9jg6Es8gPuD2uZcYDLqSw==" crossorigin="anonymous">
+  <!-- End of Bootstrap -->
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<!-- Start of Navigation Bar -->
+	<%= render 'shared/header' %>
+<!-- End of Navigation Bar -->
+
+
+<div class="container">
+  <!-- Render flash partial -->
+  <%= render 'shared/flash' %>
+  <!-- End of flash -->
+	<%= yield %>
+</div>
+
+<% if Rails.env.development? %>
+	<%= debug(params) %>
+<% end %>
+
+</body>
+</html>

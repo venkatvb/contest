@@ -1,0 +1,8 @@
+<div class="form-group row">
+	<div class="col-sm-offset-2 col-sm-10">
+		<%= locals[:obj].submit "Submit", class: 'btn btn-primary' %>
+		<% if locals[:reset] %>
+			<%= locals[:obj].submit "Reset", :type => "reset", class: 'btn btn-secondary' %>
+		<% end %>
+	</div>
+</div>

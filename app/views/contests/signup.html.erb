@@ -1,0 +1,19 @@
+<% content_for :title, "Sign Up" %>
+<div class="jumbotron">
+	<fieldset>
+        <legend>Sign Up</legend>
+	<%= form_for @account, url: {action: "create"} do |f| %>
+		<%= render 'shared/error_messages', locals: { obj: @account} %>
+		<%= render 'shared/form_label_text', locals: { label: "name", obj: f } %>
+		<%= render 'shared/form_label_email', locals: { label: "email", obj: f } %>
+		<%= render 'shared/form_label_text', locals: { label: "college", obj: f} %>
+		<%= render 'shared/form_label_text', locals: { label: "register_number", obj: f} %>
+		<%= render 'shared/form_label_text', locals: { label: "department", obj: f} %>
+		<%= render 'shared/form_label_text', locals: { label: "year", obj: f} %>
+		<%= render 'shared/form_label_text', locals: { label: "phone", obj: f} %>
+		<%= render 'shared/form_label_password', locals: { label: "password", obj: f} %>
+		<%= render 'shared/form_label_password', locals: { label: "password_confirmation", obj: f} %>
+		<%= render 'shared/form_submit', locals: { obj: f, type: "submit", reset: true} %>
+	</fieldset>
+	<% end %>
+</div>

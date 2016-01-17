@@ -1,0 +1,21 @@
+<% content_for :title, "Leaderboard" %>
+<div>
+	<table class="table table-striped">
+	  <thead>
+	    <tr>
+	      <th>#</th>
+	      <th>Name</th>
+	      <th>Level</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    <% @accounts.each_with_index do |account, index| %>
+	    	<tr>
+	    		<th scope="row"><%= index+1 %></th>
+	    		<td><%= account.name %></td>
+	    		<td><%= account.level %></td>
+	    	</tr>	
+		<% end %>    	
+	  </tbody>
+	</table>
+</div>

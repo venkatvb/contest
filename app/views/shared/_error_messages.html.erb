@@ -1,0 +1,12 @@
+<% if locals[:obj].errors.any? %>
+	<div  class="alert alert-danger" role="alert">
+		<div>
+			<%= pluralize(locals[:obj].errors.count, "error") %> prohibited this form from being saved.
+		</div>
+		<ul>
+			<% locals[:obj].errors.full_messages.each do |message| %>
+				<li><%= message %></li>
+			<% end %>
+		</ul>
+	</div>
+<% end %>

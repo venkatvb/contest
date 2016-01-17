@@ -1,0 +1,12 @@
+<% content_for :title, "Sign In" %>
+<div class="jumbotron">
+<%= form_for(:session, :url => sessions_signin_path, :class => "form-horizontal") do |f| %>
+    <fieldset>
+        <legend>Sign In</legend>
+        <%= render 'shared/form_label_email', locals: { label: "email", obj: f } %>
+        <%= render 'shared/form_label_password', locals: { label: "password", obj: f } %>
+        <%= render 'shared/form_submit', locals: { obj: f, type: "submit", reset: true} %>
+    </fieldset>
+<% end %>
+<p>New User? <%= link_to "Sign up now!", contests_signup_path %></p>
+</div>
