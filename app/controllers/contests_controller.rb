@@ -1,7 +1,6 @@
 class ContestsController < ApplicationController
   before_action :sign_in_user, :only => [:index, :validate, :success]
   def index
-    max_level = Problem.maximum(:level)
     if get_level > max_level
       flash[:success] = "Congrats! You cleared the problem set."
       render 'success'      
@@ -33,6 +32,7 @@ class ContestsController < ApplicationController
 
   def leaderboard
     @accounts = Account.select(:name, :level, :time).order(level: :desc, time: :asc)
+    @max_level = max_level
   end
 
   def signup
