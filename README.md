@@ -1,1 +1,1 @@
-# contest
+RoR platform to host online contests.
