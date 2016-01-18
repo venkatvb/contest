@@ -13,6 +13,11 @@
 		<%= render 'shared/form_label_text', locals: { label: "phone", obj: f} %>
 		<%= render 'shared/form_label_password', locals: { label: "password", obj: f} %>
 		<%= render 'shared/form_label_password', locals: { label: "password_confirmation", obj: f} %>
+		<div class="form-group row">
+			<div class="col-sm-offset-2 col-sm-10">
+				<%= recaptcha_tags %>
+			</div>
+		</div>
 		<%= render 'shared/form_submit', locals: { obj: f, type: "submit", reset: true} %>
 	</fieldset>
 	<% end %>

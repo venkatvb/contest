@@ -24,6 +24,8 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 # rails admin gem
 gem 'rails_admin'
+# Recaptcha
+gem "recaptcha", require: "recaptcha/rails"
 
 # Use Unicorn as the app server
 # gem 'unicorn'

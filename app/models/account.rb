@@ -10,7 +10,6 @@ class Account < ActiveRecord::Base
   			uniqueness: { case_sensitive: false }
   validates :password, presence: true, length: { minimum: 6 }
   validates :password_confirmation, presence: true
-  validates :level, presence: true, :numericality => { :greater_than_or_equal_to => 1 }
   def create_remember_token
     self.remember_token = SecureRandom.urlsafe_base64
   end

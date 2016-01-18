@@ -23,7 +23,7 @@ class ContestsController < ApplicationController
 
   def create
   	@account = Account.new(account_params)
-  	if @account.save
+  	if verify_recaptcha(model: @account) && @account.save
   		redirect_to '/'
   	else
   		render 'signup'
