@@ -22,6 +22,7 @@ class ContestsController < ApplicationController
   end
 
   def create
+    require 'net/http'
   	@account = Account.new(account_params)
   	if verify_recaptcha(model: @account) && @account.save
   		redirect_to '/'
