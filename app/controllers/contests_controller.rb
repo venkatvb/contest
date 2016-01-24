@@ -7,16 +7,21 @@ class ContestsController < ApplicationController
 	@@wrongSubmissionMessage = "Ohh! nice try. Try again!!"
 	@@submissionLimitMessage = "Next submission can be done only after 30 seconds."
 	@@answerEmptyMessage = "Oop! You haven't keyed anything."
+	@@accessDeniedMessage = "Ooh Snap! You dont have access to the page you requested before, so directed to your latest level."
 	@@tresholdSubmissionTimeDifference = 30
 	
+	def dashboard
+		@problems = Problem.all
+	end
+
 	def index
-		if get_level > max_level
-			flash[:success] = @@congratsMessage
-			render 'success'      
-		else
-			@name = Problem.find_by_level(get_level).url
-			@problem = Problem.new
+		@problemId = params[:id].to_i
+		if !validProblemId?(@problemId)
+			@problemId = get_problem_id
+			flash[:danger] = @@accessDeniedMessage
 		end
+		@name = Problem.find(@problemId).url
+		@problem = Problem.new
 	end
 
 	def validate
@@ -95,6 +100,10 @@ class ContestsController < ApplicationController
 		@@submissionLimitMessage = "Next submission can be done only after #{@@tresholdSubmissionTimeDifference - time} seconds."
 	end
 
-	private :account_params, :canSubmit?, :cannotSubmit?, :time_elapsed
+	def validProblemId?(problemId)
+		problemId > 0 and problemId <= get_problem_id		
+	end
+
+	private :account_params, :canSubmit?, :cannotSubmit?, :time_elapsed, :storeSubmission, :setSubmissionLimitMessage, :validProblemId?
 
 end

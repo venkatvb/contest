@@ -1,0 +1,33 @@
+<% content_for :title, "Dashboard" %>
+<div class="container container-table">
+    <div class="row vertical-center-row">
+        <div class="text-center col-md-4 col-md-offset-4">
+        	<div>
+				<table class="table table-striped">
+				  <thead>
+				    <tr>
+				      <th>#</th>
+				      <th class="text-center">Problem Name</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+					<% @problems.each_with_index do |problem, index| %>
+				    	<% if signed_in? and problem.level < get_level %>
+				    		<tr class="success">
+				    	<% else %>
+				    		<tr>
+				    	<% end %>
+				    		<th scope="row"><%= index+1 %></th>
+				    		<% if signed_in? and problem.level <= get_level %>
+				    			<td><%= link_to problem.url, "/"+problem.id.to_s %></td>
+			    			<% else %>
+			    				<td><%= problem.url %></td>
+							<% end %>
+				    	</tr>	
+					<% end %>    	
+				  </tbody>
+				</table>
+			</div>
+        </div>
+    </div>
+</div>

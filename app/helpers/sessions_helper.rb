@@ -37,10 +37,17 @@ module SessionsHelper
 	end
 
 	def get_level
+		if @current_account.nil?
+			current_account
+		end
 		@current_account.level
 	end
 
 	def get_problem_id
-		Problem.where(level: get_level).select(:id).first.id.to_i
+		level = get_level
+		if level > max_level
+			level = max_level
+		end
+		Problem.where(level: level).select(:id).first.id.to_i
 	end
 end
