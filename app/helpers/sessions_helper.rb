@@ -33,10 +33,14 @@ module SessionsHelper
 	end
 
 	def get_account_id
-		@current_account.id
+		@current_account.id.to_i
 	end
 
 	def get_level
 		@current_account.level
+	end
+
+	def get_problem_id
+		Problem.where(level: get_level).select(:id).first.id.to_i
 	end
 end
