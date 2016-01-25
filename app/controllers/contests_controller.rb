@@ -11,8 +11,8 @@ class ContestsController < ApplicationController
   end
 
   def validate
-    @answer = Problem.find_by_level(get_level).answer.strip
-    if @answer == params[:problem][:answer].strip
+    @answer = Problem.find_by_level(get_level).answer.split.join
+    if @answer == params[:problem][:answer].split.join
       Account.where(:id => get_account_id).update_all(level: get_level+1, time: DateTime.now )
       flash[:success] = "Well done! Nailed it!"
     else
