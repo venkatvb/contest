@@ -1,6 +1,7 @@
 class ContestsController < ApplicationController
   before_action :sign_in_user, :only => [:index, :validate, :success]
   def index
+    render 'notstarted'
     if get_level > max_level
       flash[:success] = "Congrats! You cleared the problem set."
       render 'success'      
