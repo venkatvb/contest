@@ -32,7 +32,7 @@ class ContestsController < ApplicationController
   end
 
   def leaderboard
-    @accounts = Account.select(:name, :level, :time).order(level: :desc, time: :asc)
+    @accounts = Account.select(:name, :level, :college, :time).order(level: :desc, time: :asc)
     @max_level = max_level
   end
 
