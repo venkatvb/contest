@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160117180652) do
+ActiveRecord::Schema.define(version: 20160202202148) do
 
   create_table "accounts", force: :cascade do |t|
     t.string   "name"
@@ -23,7 +23,6 @@ ActiveRecord::Schema.define(version: 20160117180652) do
     t.integer  "level"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
-    t.string   "password_digest"
     t.string   "remember_token"
     t.string   "register_number"
     t.datetime "time"
@@ -36,5 +35,17 @@ ActiveRecord::Schema.define(version: 20160117180652) do
     t.datetime "updated_at", null: false
     t.string   "answer"
   end
+
+  create_table "submissions", force: :cascade do |t|
+    t.integer  "account_id"
+    t.integer  "problem_id"
+    t.datetime "time"
+    t.string   "answer"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "submissions", ["account_id"], name: "index_submissions_on_account_id"
+  add_index "submissions", ["problem_id"], name: "index_submissions_on_problem_id"
 
 end
