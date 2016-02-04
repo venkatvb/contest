@@ -2,7 +2,7 @@ class ContestsController < ApplicationController
   before_action :sign_in_user, :only => [:index, :validate, :success]
   def index
     # Not started
-    # render 'notstarted'
+    render 'notstarted'
     # End of Not started
 
     # Ended
