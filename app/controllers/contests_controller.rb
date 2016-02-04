@@ -6,7 +6,7 @@ class ContestsController < ApplicationController
     # End of Not started
 
     # Ended
-    render 'ended'
+    # render 'ended'
     # End of Ended
     
     if get_level > max_level
